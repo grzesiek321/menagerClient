@@ -20,13 +20,6 @@
     echo json_encode( $data);
   }
 
-  function delateRow($pdo,$nameid){
-    $query = " SELECT * FROM pacjenci WHERE name= :nameid";
-    $statement = $pdo->prepare($query);
-    $statement->execute(["nameid"=>$nameid]);
-    $data = $statement->fetch(PDO::FETCH_ASSOC);
-    echo json_encode( $data);
-  }
 
   function resendData ($pdo,$nameid){
     $query = " SELECT * FROM pacjenci WHERE name= :nameid";
