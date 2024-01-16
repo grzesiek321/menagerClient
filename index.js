@@ -121,6 +121,8 @@ function submitForm(action) {
   }
   action == null ? (dataform.action = 'add') : null
 
+  console.log('test')
+
   tableBuilid(dataform, 'add')
 }
 
