@@ -31,7 +31,7 @@
   
 
   if (isset($dataJs)) {
-   
+    $nameOld= $dataJs["nameOld"];
     $name = $dataJs["name"];
     $birthdate = $dataJs["birthdate"];
     $address = $dataJs["address"];
@@ -46,11 +46,17 @@
          resendData($pdo,$name);
         break;
       case "delate" :
-          resendData($pdo,$name);
+         resendData($pdo,$name);
          $updateQuery= "DELETE FROM  pacjenci WHERE name = :name ";
          $stmtUp=$pdo->prepare($updateQuery);
          $stmtUp->execute(["name" => $name ]);
-        break;
+        break; 
+      case "edit" : {
+          $updateQuery= "UPDATE pacjenci SET name = :name , birthdate = :birthdate , address = :address, phone_number = :phone_number WHERE name = :nameOld ";
+         $stmtUp=$pdo->prepare($updateQuery);
+         $stmtUp->execute(["name" => $name , "birthdate" => $birthdate , "address" =>$address , "phone_number" => $phone_number, "nameOld" =>  $nameOld ]);
+         resendData($pdo,$name);
+      }
    }
   }
   else{

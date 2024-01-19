@@ -1,6 +1,16 @@
 const phpScriptUrl = 'server.php'
 
-function tableBuilid(sendData, action) {
+const name = document.getElementById('name')
+const birthdate = document.getElementById('birthDate')
+const address = document.getElementById('address')
+const phone = document.getElementById('phone')
+const form = document.getElementById('form')
+const button = document.getElementById('button')
+
+let actionValue = 'add'
+let oldName = 'base'
+
+function tableBuilid(sendData) {
   fetch(phpScriptUrl, {
     method: 'POST',
     headers: {
@@ -10,11 +20,10 @@ function tableBuilid(sendData, action) {
   })
     .then((response) => response.json())
     .then((data) => {
-      let table = document.getElementById('table')
+      let table = document.getElementById('table2')
       if (Array.isArray(data)) {
         data.forEach((rowData) => {
           let row = table.insertRow()
-          rowData.action = action
           Object.values(rowData).forEach((value) => {
             let cell = row.insertCell()
             cell.textContent = value
@@ -28,32 +37,28 @@ function tableBuilid(sendData, action) {
           })
           buttonCell.appendChild(buttonDel)
 
-          let buttonCell2 = row.insertCell()
           let buttonEdit = document.createElement('button')
           buttonEdit.innerHTML = 'Edit'
           buttonEdit.addEventListener('click', function () {
-            submitForm('edit')
+            editRecord(rowData)
           })
-          buttonCell2.appendChild(buttonEdit)
+          buttonCell.appendChild(buttonEdit)
         })
       } else {
         let rowDelated = true
         for (var i = 0; i < table.rows.length; i++) {
           let cellContent = table.rows[i]
-
-          cellContent.cells[0].textContent == data.name ? (table.deleteRow(i), (rowDelated = false)) : null
+          cellContent.cells[0].textContent == data.name && actionValue == 'delate'
+            ? (table.deleteRow(i), (rowDelated = false), console.log('cyk'), (actionValue = 'add'), form.reset())
+            : null
+          cellContent.cells[0].textContent == oldName ? (table.deleteRow(i), (actionValue = 'add'), form.reset()) : null
         }
-
         if (rowDelated) {
           let row = table.insertRow()
-
-          data.action = action
-
           Object.values(data).forEach((value) => {
             let cell = row.insertCell()
             cell.textContent = value
           })
-
           let buttonCell = row.insertCell()
           let buttonDel = document.createElement('button')
           buttonDel.innerHTML = 'DELATE'
@@ -61,43 +66,17 @@ function tableBuilid(sendData, action) {
             delateRow(data)
           })
           buttonCell.appendChild(buttonDel)
-
-          let buttonCell2 = row.insertCell()
           let buttonEdit = document.createElement('button')
           buttonEdit.innerHTML = 'Edit'
           buttonEdit.addEventListener('click', function () {
-            submitForm('edit')
+            editRecord(data)
           })
-          buttonCell2.appendChild(buttonEdit)
+          buttonCell.appendChild(buttonEdit)
+          actionValue = 'add'
         } else {
           null
         }
       }
-
-      // data.forEach((rowData) => {
-      //   let row = table.insertRow()
-      //   rowData.action = action
-      //   Object.values(rowData).forEach((value) => {
-      //     let cell = row.insertCell()
-      //     cell.textContent = value
-      //   })
-
-      //   let buttonCell = row.insertCell()
-      //   let buttonDel = document.createElement('button')
-      //   buttonDel.innerHTML = 'DELATE'
-      //   buttonDel.addEventListener('click', function () {
-      //     delateRow(rowData)
-      //   })
-      //   buttonCell.appendChild(buttonDel)
-
-      //   let buttonCell2 = row.insertCell()
-      //   let buttonEdit = document.createElement('button')
-      //   buttonEdit.innerHTML = 'Edit'
-      //   buttonEdit.addEventListener('click', function () {
-      //     submitForm('edit')
-      //   })
-      //   buttonCell2.appendChild(buttonEdit)
-      // })
     })
     .catch((error) => {
       console.error('Fetch error:', error)
@@ -106,43 +85,35 @@ function tableBuilid(sendData, action) {
 
 tableBuilid()
 
-function submitForm(action) {
-  const name = document.getElementById('name')
-  const birthdate = document.getElementById('birthDate')
-  const address = document.getElementById('address')
-  const phone = document.getElementById('phone')
-
+function submitForm() {
   const dataform = {
     name: name.value,
     birthdate: birthdate.value,
     address: address.value,
     phone_number: phone.value,
-    action: action,
+    nameOld: oldName,
+    action: actionValue,
   }
-  action == null ? (dataform.action = 'add') : null
 
-  console.log('test')
-
-  tableBuilid(dataform, 'add')
+  tableBuilid(dataform)
+  actionValue = 'add'
+  button.innerHTML = 'Add'
 }
 
 function delateRow(data) {
+  data.nameOld = 'brak'
   data.action = 'delate'
+  actionValue = 'delate'
   tableBuilid(data)
 }
 
-// function editRow(data){
-//    const name = document.getElementById('name')
-//    const birthdate = document.getElementById('birthDate')
-//    const address = document.getElementById('address')
-//    const phone = document.getElementById('phone')
+function editRecord(data) {
+  oldName = data.name
+  actionValue = 'edit'
 
-//      const dataform = {
-//        name: name.value,
-//        birthdate: birthdate.value,
-//        address: address.value,
-//        phone_number: phone.value,
-//        action: action,
-//      }
-
-// }
+  button.innerHTML = 'Edit'
+  name.value = data.name
+  birthdate.value = data.birthdate
+  address.value = data.address
+  phone.value = data.phone_number
+}

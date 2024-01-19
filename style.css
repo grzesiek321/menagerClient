@@ -1,0 +1,127 @@
+/* Resetowanie domyślnych styli dla formularza */
+form {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* Styl dla całego formularza */
+form {
+    max-width: 400px;
+
+    margin-right: 0px;
+    margin-top: 0px;
+    border: #3498db 4px solid;
+    padding: 20px;
+    background-color: #3498db;
+
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styl dla etykiet */
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Styl dla pól wejściowych */
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+/* Styl dla przycisku */
+button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Styl dla przycisku po najechaniu */
+button:hover {
+    background-color: #83c2eb
+}
+
+
+
+.kontener {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.tabelConteiner {
+    border: #3498db 4px solid;
+}
+
+/* Resetowanie domyślnych styli dla tabeli */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Styl dla nagłówka tabeli */
+table thead {
+    background-color: #3498db;
+    color: #fff;
+}
+
+/* Styl dla komórek nagłówka */
+table th {
+    padding: 12px;
+    text-align: left;
+    width: 150px;
+    max-height: 40px;
+    /* Stała szerokość kolumny */
+}
+
+/* Styl dla wierszy tabeli */
+table tbody tr {
+    border-bottom: 1px solid #ccc;
+}
+
+
+
+/* Styl dla komórek wierszy */
+table td {
+    padding: 10px;
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+    /* Stała szerokość kolumny */
+}
+
+/* Styl dla przycisku w kolumnie "ACTION" */
+table .action-button {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Styl dla przycisku po najechaniu w kolumnie "ACTION" */
+table .action-button:hover {
+    background-color: #c0392b;
+}
+
+#value2 {
+    display: none;
+}
+
+#value1 {
+    display: none;
+}
