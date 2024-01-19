@@ -12,25 +12,25 @@
 
 
     <div class="kontener">
-      <form class="max-w-md mx-auto mt-8 bg-blue- p-8 rounded-md shadow-md" id="form">
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-600" for="name">Name:</label>
-          <input class="mt-1 p-2 w-52 border rounded-md" type="text" id="name"  >
+      <form id="form">
+        <div >
+          <label  for="name">Name:</label>
+          <input  type="text" id="name"  >
         </div>
     
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-600" for="birthDate"></label>
-          <input class="mt-1 p-2 w-52 border rounded-md" type="date" id="birthDate"  >
+          <label  for="birthDate"></label>
+          <input  type="date" id="birthDate"  >
         </div>
 
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-600" for="address">Address:</label>
-          <input class="mt-1 p-2 w-52 border rounded-md" type="text" id="address"  >
+          <label  for="address">Address:</label>
+          <input  type="text" id="address"  >
         </div>
       
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-600" for="phone">Phone:</label>
-          <input class="mt-1 p-2 w-52 border rounded-md" type="text" id="phone"  >
+          <label  for="phone">Phone:</label>
+          <input  type="text" id="phone"  >
         </div>
 
         <input  type="text" id="value1"  >
