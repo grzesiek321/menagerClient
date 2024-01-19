@@ -49,7 +49,7 @@ function tableBuilid(sendData) {
         for (var i = 0; i < table.rows.length; i++) {
           let cellContent = table.rows[i]
           cellContent.cells[0].textContent == data.name && actionValue == 'delate'
-            ? (table.deleteRow(i), (rowDelated = false), console.log('cyk'), (actionValue = 'add'), form.reset())
+            ? (table.deleteRow(i), (rowDelated = false), (actionValue = 'add'), form.reset())
             : null
           cellContent.cells[0].textContent == oldName ? (table.deleteRow(i), (actionValue = 'add'), form.reset()) : null
         }

@@ -41,12 +41,12 @@
       </form>
       <div class=" tabelConteiner ">
         <table   id="table">
-          <thead class="bg-gray-800 text-white">
-            <th class="w-1/5 p-2 ">NAME</th>
-            <th class="w-1/5 p-2">BIRTH DATE</th>
-            <th class="w-1/5 p-2">ADDRESS</th>
-            <th class="w-1/5 p-2">PHONE</th>
-            <th class="w-1/5 p-2">ACTION</th>
+          <thead >
+            <th >NAME</th>
+            <th >BIRTH DATE</th>
+            <th >ADDRESS</th>
+            <th >PHONE</th>
+            <th >ACTION</th>
           </thead>
           <tbody class="text-center  " id="table2">  
           </tbody>
